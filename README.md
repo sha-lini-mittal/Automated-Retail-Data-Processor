@@ -16,6 +16,7 @@ Repo name: automated-retail-data-processor
 Short description: Streamlit pipeline to clean retail data, aggregate sales, and forecast using Simple Moving Average (SMA).
 
 Project structure:
+```text
 automated-retail-data-processor/
 │
 ├── sales.py                  # Main Streamlit app: ingestion, cleaning, aggregation, downloads. :contentReference[oaicite:2]{index=2}
@@ -28,7 +29,7 @@ automated-retail-data-processor/
 │   ├── monthly_sales_aggregated.csv
 │   └── weekly_sales_aggregated.csv
 └── notebooks/                # Optional: Jupyter notebooks, experiments
-
+```
 Installation & local setup:
 Clone the repo:
 git clone https://github.com/sha-lini-mittal/automated-retail-data-processor.git
