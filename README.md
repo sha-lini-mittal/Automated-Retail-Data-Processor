@@ -1,19 +1,17 @@
-Automated Retail Data Processor
+**Automated Retail Data Processor**
 
 
 Automated Retail Data Processor - A Streamlit-based pipeline to clean retail transaction data, produce aggregated monthly/weekly datasets, run EDA, and generate simple moving-average (SMA) forecasts for quantity, price and revenue.
 
-Short description: Automated pipeline for cleaning retail sales data, producing aggregated time-series, interactive dashboards and SMA-based forecasts with evaluation metrics and downloadable outputs.
+Short description: \
+Automated pipeline for cleaning retail sales data, producing aggregated time-series, interactive dashboards and SMA-based forecasts with evaluation metrics and downloadable outputs.
 
-Highlights:
-Automated data cleaning & aggregation (monthly & weekly).
-Interactive Streamlit UI for EDA, downloads and pipeline control.
-SMA forecasting dashboard with evaluation (MAE, RMSE, MAPE, R²), confidence intervals and downloadable forecasts. See sales_forecast.py
-Export processed files (cleaned, monthly & weekly aggregates) for BI or ML use.
-
-Suggested repository name & short description:
-Repo name: automated-retail-data-processor
-Short description: Streamlit pipeline to clean retail data, aggregate sales, and forecast using Simple Moving Average (SMA).
+Highlights: 
+- Automated data cleaning & aggregation (monthly & weekly). 
+- Interactive Streamlit UI for EDA, downloads and pipeline control. 
+- SMA forecasting dashboard with evaluation (MAE, RMSE, MAPE, R²), confidence intervals and downloadable forecasts.
+- See sales_forecast.py 
+- Export processed files (cleaned, monthly & weekly aggregates) for BI or ML use.
 
 Project structure:
 ```text
@@ -31,6 +29,7 @@ automated-retail-data-processor/
 └── notebooks/                # Optional: Jupyter notebooks, experiments
 ```
 Installation & local setup:
+```text
 Clone the repo:
 git clone https://github.com/sha-lini-mittal/automated-retail-data-processor.git
 cd automated-retail-data-processor
@@ -43,8 +42,9 @@ python3 -m venv venv
 source venv/bin/activate
 Install dependencies:
 pip install -r requirements.txt
-
+```
 Requirements.txt
+```
 streamlit
 pandas
 numpy
@@ -53,29 +53,30 @@ matplotlib
 scikit-learn
 joblib
 openpyxl
-
-Run the apps locally:
+```
+Run the apps locally:\
 Open http://localhost:8501 in your browser (Streamlit usually opens automatically).
 
-How to use (quick flow):
-Place your raw retail CSV (e.g., online_retail.csv) into datasets/ or upload via the sales.py 
-Run sales.py — execute the automated processing pipeline to produce: cleaned_data_with_filled_descriptions.csv, monthly_sales_aggregated.csv, weekly_sales_aggregated.csv  These become the inputs for the forecasting app. 
+How to use (quick flow): \
+Place your raw retail CSV (e.g., online_retail.csv) into datasets/ or upload via the sales.py \
+Run sales.py — execute the automated processing pipeline to produce: cleaned_data_with_filled_descriptions.csv, monthly_sales_aggregated.csv, weekly_sales_aggregated.csv. These become the inputs for the forecasting app. \
 Run sales_forecast.py to explore products, switch monthly/weekly views, enable SMA forecasting, tune window size and forecast horizon, evaluate model and download forecasts. 
 
-Forecasting & model details:
+Forecasting & model details: \
 Algorithm: Simple Moving Average (SMA) forecasting — forecast equals mean of the last window_size historical periods. Implemented in simple_moving_average_forecast inside sales_forecast.py.sales_forecast
 
-Evaluation: Time-aware train/test split and metrics computed (MAE, MSE, RMSE, MAPE, R²). See calculate_evaluation_metrics in sales_forecast.py
+Evaluation: \
+Time-aware train/test split and metrics computed (MAE, MSE, RMSE, MAPE, R²). See calculate_evaluation_metrics in sales_forecast.py \
 Confidence intervals: approximate 95% CIs via rolling-standard-deviation based method (implemented). 
 
-Expected input columns (typical retail dataset):
-The processing pipeline expects fields similar to the UCI Online Retail dataset:
+Expected input columns (typical retail dataset): \
+The processing pipeline expects fields similar to the UCI Online Retail dataset: 
 InvoiceNo, StockCode, Description, Quantity, InvoiceDate, UnitPrice (or Price), CustomerID, Country
 Sales.py code inspects and aggregates columns into monthly/weekly summaries — check the script if your column names differ. 
 
-Troubleshooting & tips:
-If python --version fails, make sure you typed it correctly (no space between -- and version): python --version (Typing python -- version will attempt to open a file called version in the current directory.)
-If you see warnings about scripts installed to a Scripts directory not on PATH (e.g., watchmedo.exe, dotenv.exe), either: add that Scripts path to your PATH, or use the full path to the script, or activate your virtual environment (recommended) where the Scripts directory will be on PATH while active.
+Troubleshooting & tips: \
+If python --version fails, make sure you typed it correctly (no space between -- and version): python --version (Typing python -- version will attempt to open a file called version in the current directory.) \
+If you see warnings about scripts installed to a Scripts directory not on PATH (e.g., watchmedo.exe, dotenv.exe), either: add that Scripts path to your PATH, or use the full path to the script, or activate your virtual environment (recommended) where the Scripts directory will be on PATH while active. \
 If the app complains missing CSVs, confirm processed files are in datasets/ or re-run sales.py to create them. 
 
 Contributing:
@@ -87,9 +88,9 @@ Push and open a Pull Request.
 
 License: MIT License - feel free to reuse and modify. Add your LICENSE file with MIT text.
 
-Future enhancements (ideas):
-Add more forecasting algorithms (ARIMA, Prophet, LSTM).
-Implement backtesting and more robust cross-validation for time-series.
-Add notifications/alerts for stock-outs or sudden revenue drops.
-Build a REST API endpoint to serve forecasts.
-Add automated unit tests and CI pipeline.
+Future enhancements (ideas): 
+- Add more forecasting algorithms (ARIMA, Prophet, LSTM).
+- Implement backtesting and more robust cross-validation for time-series.
+- Add notifications/alerts for stock-outs or sudden revenue drops.
+- Build a REST API endpoint to serve forecasts.
+- Add automated unit tests and CI pipeline.
